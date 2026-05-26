@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Powered Drug Prediction System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <header class="hero section">
+    <nav class="nav glass">
+      <div class="brand">MediNova AI</div>
+      <a href="#predictor" class="btn small">Predict Now</a>
+    </nav>
+    <div class="hero-content">
+      <div class="hero-text" data-aos="fade-up">
+        <p class="chip">Futuristic Healthcare Intelligence</p>
+        <h1>AI Powered Drug Prediction System</h1>
+        <p class="subheading">Predict the most suitable medicine intelligently using Machine Learning.</p>
+        <div class="cta-row">
+          <a href="#predictor" class="btn">Start Prediction</a>
+          <a href="#how" class="btn ghost">How It Works</a>
+        </div>
+      </div>
+      <div class="floating-cards" data-aos="zoom-in">
+        <div class="card glass glow">Real-time Drug Recommendation</div>
+        <div class="card glass glow">Decision-Tree Powered Clinical Intelligence</div>
+        <div class="card glass glow">Explainable AI Insights & Confidence</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="predictor" class="section">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Live Patient Prediction</h2>
+      <p>Enter patient parameters and get instant recommendation from the loaded saved model.</p>
+    </div>
+
+    <div class="predict-grid">
+      <form id="predictForm" class="glass form-card" data-aos="fade-up">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="age" min="1" max="120" required>
+        </div>
+        <div class="form-group">
+          <label>Sex</label>
+          <select id="sex" required>
+            <option value="">Select</option>
+            <option value="F">Female</option>
+            <option value="M">Male</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Blood Pressure</label>
+          <select id="bp" required>
+            <option value="">Select</option>
+            <option value="HIGH">High</option>
+            <option value="NORMAL">Normal</option>
+            <option value="LOW">Low</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cholesterol</label>
+          <select id="cholesterol" required>
+            <option value="">Select</option>
+            <option value="HIGH">High</option>
+            <option value="NORMAL">Normal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Na_to_K Ratio: <span id="naLabel">15.00</span></label>
+          <input type="range" id="na_to_k" min="5" max="40" step="0.01" value="15">
+        </div>
+        <button class="btn full" type="submit">Run AI Prediction</button>
+        <div id="loader" class="loader hidden">Analyzing clinical patterns...</div>
+      </form>
+
+      <div class="glass result-card" data-aos="fade-left">
+        <h3>Prediction Result</h3>
+        <p class="result-drug" id="drugOutput">Awaiting input...</p>
+        <p class="result-confidence" id="confidenceOutput">Confidence: --</p>
+        <p id="explainOutput">AI explanation will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="analytics" class="section">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Healthcare Analytics Dashboard</h2>
+    </div>
+    <div class="chart-grid">
+      <div class="glass chart-card" data-aos="zoom-in"><canvas id="importanceChart"></canvas></div>
+      <div class="glass chart-card" data-aos="zoom-in"><canvas id="confidenceChart"></canvas></div>
+    </div>
+  </section>
+
+  <section id="how" class="section cards-3">
+    <div class="glass info" data-aos="fade-up"><h3>About the AI System</h3><p>Production-ready Flask application with a pre-trained Decision Tree model loaded from `drug-model.pkl` for instant inference.</p></div>
+    <div class="glass info" data-aos="fade-up" data-aos-delay="100"><h3>How Prediction Works</h3><p>Patient parameters are encoded, passed to the loaded model, and converted into an explainable drug recommendation with confidence.</p></div>
+    <div class="glass info" data-aos="fade-up" data-aos-delay="200"><h3>Medical AI Benefits</h3><p>Supports faster screening, consistency in recommendations, and transparent factor-based interpretation for clinicians.</p></div>
+  </section>
+
+  <section class="section cards-3">
+    <div class="glass info"><h3>Features</h3><p>Live API prediction, feature importance, confidence distribution, and futuristic clinical UI interactions.</p></div>
+    <div class="glass info"><h3>FAQ</h3><p><b>Is the model retrained?</b> No. Only the saved model is loaded for inference.</p></div>
+    <div class="glass info"><h3>Testimonials</h3><p>"A sleek and practical AI healthcare interface for rapid support decisions."</p></div>
+  </section>
+
+  <footer class="footer">MediNova AI • Advanced Drug Recommendation Platform</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
